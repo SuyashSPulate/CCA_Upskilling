@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment_2._1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //try
+            //{
+            //    Employee e1 = new Employee();
+            //    e1.salarycalculation();
+            //    Console.WriteLine(e1);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+            Employee e2 = new Employee();
+            e2.EmpNo = 1;
+            e2.EmpName = "Suresh";
+            e2.Salary = 30000;
+            e2.salarycalculation();
+            Console.WriteLine(e2);
+        }
+    }
+}

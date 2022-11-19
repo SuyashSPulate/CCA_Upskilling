@@ -1,0 +1,126 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment_2._1
+{
+    public class customexp : Exception
+    {
+        public customexp(string message) : base(message)
+        {
+
+        }
+    }
+    public class Employee
+    {
+
+        protected static int count;
+
+        protected double HRA, TA, DA, PF, TDS, NetSalary, GrossSalary;
+        //public employee()
+        //{
+        //    count++;
+        //    EmpNo = count;
+        //    EmpName = "unknown";
+        //    Salary = 0.0;
+        //}
+
+        //public employee(string EmpName, double Salary)
+        //{
+
+        //    if (string.IsNullOrEmpty(EmpName))
+        //    {
+        //        throw new customexp("name is required");
+        //    }
+        //    else if (Salary < 0)
+        //    {
+        //        throw new customexp("Salary must be positive");
+        //    }
+        //    else
+        //    {
+        //        count++;
+        //        this.EmpNo = count;
+        //        this.EmpName = EmpName;
+        //        this.Salary = Salary;
+        //    }
+        //}
+
+        public int EmpNo { get; set; }
+        public string EmpName { get; set; }
+
+        public double Salary { get; set; }
+
+
+        public virtual void salarycalculation()
+        {
+            if (Salary < 5000)
+            {
+                HRA = Salary * 0.1;
+                TA = Salary * 0.05;
+                DA = Salary * 0.15;
+
+                GrossSalary = Salary + HRA + TA + DA;
+
+                PF = GrossSalary * 0.1;
+                TDS = GrossSalary * 0.18;
+                NetSalary = GrossSalary - (PF + TDS);
+            }
+            else if (Salary < 10000)
+            {
+                HRA = Salary * 0.15;
+                TA = Salary * 0.1;
+                DA = Salary * 0.2;
+
+                GrossSalary = Salary + HRA + TA + DA;
+
+                PF = GrossSalary * 0.1;
+                TDS = GrossSalary * 0.18;
+                NetSalary = GrossSalary - (PF + TDS);
+            }
+            else if (Salary < 15000)
+            {
+                HRA = Salary * 0.2;
+                TA = Salary * 0.15;
+                DA = Salary * 0.25;
+
+                GrossSalary = Salary + HRA + TA + DA;
+
+                PF = GrossSalary * 0.1;
+                TDS = GrossSalary * 0.18;
+                NetSalary = GrossSalary - (PF + TDS);
+            }
+            else if (Salary < 20000)
+            {
+                HRA = Salary * 0.25;
+                TA = Salary * 0.2;
+                DA = Salary * 0.30;
+
+                GrossSalary = Salary + HRA + TA + DA;
+
+                PF = GrossSalary * 0.1;
+                TDS = GrossSalary * 0.18;
+                NetSalary = GrossSalary - (PF + TDS);
+            }
+            else if (Salary >= 20000)
+            {
+                HRA = Salary * 0.3;
+                TA = Salary * 0.25;
+                DA = Salary * 0.35;
+
+                GrossSalary = Salary + HRA + TA + DA;
+
+                PF = GrossSalary * 0.1;
+                TDS = GrossSalary * 0.18;
+                NetSalary = GrossSalary - (PF + TDS);
+            }
+
+        }
+
+        public override string ToString()
+        {
+            return "Employee " + EmpName + " of employee id = " + EmpNo + " has GrossSalary " + GrossSalary + " and has NetSalary " + NetSalary;
+        }
+    }
+}
