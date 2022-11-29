@@ -12,7 +12,7 @@ namespace Assignment_No_8._1_reflection
         static void Main(string[] args)
         {
             //Creating Assembly
-            string dllFile = @"C:\Users\PULATE\source\repos\ForReflectionDemo\ForReflectionDemo\bin\Debug\ForReflectionDemo.dll";
+            string dllFile = @"C:\Users\PULATE\source\repos\ForReflectionDemo\ForReflectionDemo\bin\Debug\ForReflectionDemo.dll";//dll File Path
             var assembly = Assembly.LoadFile(dllFile);
             var type = assembly.GetType("ForReflectionDemo.ClassForRelection");
             var obj = Activator.CreateInstance(type);
