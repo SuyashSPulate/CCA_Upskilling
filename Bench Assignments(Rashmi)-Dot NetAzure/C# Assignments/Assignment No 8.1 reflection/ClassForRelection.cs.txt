@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment_No_8._1_reflection
+{
+    public class ClassForRelection
+    {
+        public int RandomProperty { get; set; }
+
+        public double NetSalary;
+        public string EmpName;
+
+        public virtual void salarycalculation(string Name, double BasicSalary)
+        {
+            EmpName = Name;
+            double Pf = BasicSalary * 0.10;
+            double GrossSalary = BasicSalary;
+            NetSalary = GrossSalary - Pf;
+        }
+
+        public string Display()
+        {
+            return "Employee " + EmpName + " Has NetSalary of RS-" + NetSalary;
+        }
+    }
+}

@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment_No_8._1_reflection
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Creating Assembly
+            string dllFile = @"C:\Users\PULATE\source\repos\ForReflectionDemo\ForReflectionDemo\bin\Debug\ForReflectionDemo.dll";
+            var assembly = Assembly.LoadFile(dllFile);
+            var type = assembly.GetType("ForReflectionDemo.ClassForRelection");
+            var obj = Activator.CreateInstance(type);
+         
+            //Declaration
+            string Name;
+            double salary;
+
+            //User Input
+            Console.WriteLine("Give Name of employee:");
+            Name = Console.ReadLine();
+            Console.WriteLine("\nGive Basic Salary of employee:");
+            salary = Convert.ToDouble(Console.ReadLine());
+
+            //Invoking The Methods
+            var method = type.GetMethod("salarycalculation");
+            method.Invoke(obj, new object[] { Name, salary });
+
+            var method2 = type.GetMethod("Display");
+            var result = method2.Invoke(obj, new object[] { });
+
+            //Printing Returned O/P of Invoked Methods
+            Console.WriteLine("\n" + result);
+
+
+            Type T = Type.GetType("Assignment_No_8._1_reflection.ClassForRelection");
+            Console.WriteLine("\n Full Name (0)", T.FullName);
+            Console.WriteLine("Just the Name = {0}", T.Name);
+            Console.WriteLine("Just the Namespace={0}", T.Namespace);
+            Console.WriteLine();
+
+            Console.WriteLine("Properties in ClassForRelection class");
+            PropertyInfo[] properties = T.GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                Console.WriteLine(property.PropertyType.Name +":"+ property.Name);
+            }
+
+            Console.WriteLine("\nMethods in ClassForRelection class");
+            MethodInfo[] Methods = T.GetMethods();
+            foreach (MethodInfo method3 in Methods)
+            {
+                Console.WriteLine(method3.ReturnType.Name + ":" + method3.Name);
+            }
+        }
+    }
+}
